@@ -421,7 +421,7 @@ public class SentinelEventHandler implements Listener {
     @EventHandler
     public void onInvClose(InventoryCloseEvent event) {
         String invTitle = SentinelNMSHelper.getInventoryTitle(event);
-        if (invTitle.startsWith(InvPrefix)) {
+        if (invTitle != null && invTitle.startsWith(InvPrefix)) {
             int id = Integer.parseInt(invTitle.substring(InvPrefix.length()));
             NPC npc = CitizensAPI.getNPCRegistry().getById(id);
             if (npc != null && npc.hasTrait(SentinelTrait.class)) {
